@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Done By Ghetto Music</title>
+<img src="HEAD.jpg" height="50" width="500" style="display: block; margin: 0 auto;">
+<br>
+<style>
+
+body{
+background: linear-gradient(rgb(255, 102, 0) , rgb(99, 6, 6) )
+}
+.music-item {
+border: 1px solid #ffffff;
+padding: 30px;
+margin: 1px;
+}
+
+.artwork{
+width: 300px;
+height: 300px;
+object-fit: cover;
+border-radius:30px;
+}
+</style>
+</head>
+<body>
+<input type="search" id="search-input" placeholder="Search music...">
+<button id="search-btn">Search</button>
+
+<div id="music-list">
+<!-- Music items will be generated here -->
+</div>
+
+<script>
+const musicData = [
+{
+artwork: 'sindikukuyesa.jpg',
+audio: '21 SINY B AND AIRVIGN-SINDIKUKUYESA.mp3',
+title: 'Sindikukuyesa',
+artist: 'Siny B x Evan MGP',
+producer: 'Merikid',
+genre: 'Afro',
+},
+// Add more music data...
+];
+
+const musicList = document.getElementById('music-list');
+const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
+
+function renderMusicList(data) {
+musicList.innerHTML = '';
+data.forEach((music) => {
+const musicItem = document.createElement('div');
+musicItem.className = 'music-item';
+musicItem.innerHTML = `
+<img src="${music.artwork}" alt="Artwork" class="artwork">
+<audio src="${music.audio}" controls class="audio"></audio>
+<h2 class="song-title">${music.title}</h2>
+<p class="artist-name">Artist: ${music.artist}</p>
+<p class="producer">Producer: ${music.producer}</p>
+<p class="genre">Genre: ${music.genre}</p>
+<a href="${music.audio}" download><img src='DOWNLOAD BUTTON.png' height='50' width='150'></a>
+`;
+musicList.appendChild(musicItem);
+});
+}
+
+searchBtn.addEventListener('click', () => {
+const searchTerm = searchInput.value.toLowerCase();
+const filteredData = musicData.filter((music) => {
+return (
+music.title.toLowerCase().includes(searchTerm) ||
+music.artist.toLowerCase().includes(searchTerm) ||
+music.producer.toLowerCase().includes(searchTerm) ||
+music.genre.toLowerCase().includes(searchTerm)
+);
+});
+renderMusicList(filteredData);
+});
+
+renderMusicList(musicData);
+</script>
+</body>
+
+</div>
+
+</body>
+<div style="text-align: left; margin-top: 200px;">
+<a href="About.html">
+<img class="about" src="ABOUT US BUTTON.png" height="50" width="150">
+</a>
+<a href="contacts.html">
+<img class="about" src="CONTACTS BUTTON.png" height="50" width="150">
+</a>
+
+
+</html>
