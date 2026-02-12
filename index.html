@@ -1,0 +1,177 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="evan mgp, machuwila, done by ghetto, talent, mr lyrics, blessing, malawi">
+<title>Done By Ghetto Music</title>
+
+<img src="HEAD.jpg" height="50" width="500" style="display: block; margin: 0 auto;">
+<br>
+
+<style>
+body{
+background: linear-gradient(rgb(255, 102, 0) , rgb(99, 6, 6) )
+}
+
+.music-item {
+border: 1px solid #ffffff;
+padding: 30px;
+margin: 1px;
+}
+
+.artwork{
+width: 300px;
+height: 300px;
+object-fit: cover;
+border-radius:30px;
+}
+</style>
+</head>
+
+<body>
+
+<input type="search" id="search-input" placeholder="Search music...">
+<button id="search-btn">Search</button>
+
+<div id="music-list">
+<!-- Music items will be generated here -->
+</div>
+
+<script>
+
+const musicData = [
+{
+artwork: 'purpose.jpg',
+audio: 'Purpose (prod by Zamani).mp3',
+title: 'Purpose',
+artist: 'Evan MGP',
+producer: 'Zamani',
+genre: 'Dancehall',
+},
+{
+
+artwork: 'sindikukuyesa.jpg',
+
+audio: '21 SINY B AND AIRVIGN-SINDIKUKUYESA.mp3',
+
+title: 'Sindikukuyesa',
+
+artist: 'Siny B x Evan MGP',
+
+producer: 'Merikid',
+
+genre: 'Afro',
+
+},
+
+{
+artwork: 'mr lyrics.jpg',
+audio: 'EVAN MGP  FT CIGAA Mr Lyrics (prod by Zamani).mp3',
+title: 'Mr Lyrics',
+artist: 'Evan MGP X Cigga',
+producer: 'Zamani',
+genre: 'Trap Dancehall',
+},
+
+{
+artwork: 'blessing.jpg',
+audio: 'EVAN MGP x ROGIK PENT -BLESSING (Prod. MERIKID ) .mp3',
+title: 'Blessing',
+artist: 'Evan MGP x Rogik Pent',
+producer: 'Merikid',
+genre: 'Hip hop Danchall',
+},
+
+{
+artwork: 'phula2.jpg',
+audio: 'EVAN MGP Feat.GN CEE-PHULA.mp3',
+title: 'Phula',
+artist: 'Evan MGP X Gn cee',
+producer: 'Merikid',
+genre: 'Afro Dancehall',
+},
+
+{
+artwork: 'amayo.jpg',
+audio: 'MAKUMBA FT EVAN MUSIC-AMAYO-Prod by MERIKID-.mp3',
+title: 'Amayo',
+artist: 'Makumba x Evan MGP',
+producer: 'Merikid',
+genre: 'Hip hop',
+},
+
+// Add more music data...
+
+];
+
+const musicList = document.getElementById('music-list');
+const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
+
+function renderMusicList(data) {
+musicList.innerHTML = '';
+
+data.forEach((music) => {
+const musicItem = document.createElement('div');
+musicItem.className = 'music-item';
+
+musicItem.innerHTML = `
+    <img src="${music.artwork}" alt="Artwork" class="artwork">
+    <audio src="${music.audio}" controls class="audio"></audio>
+    <h2 class="song-title">${music.title}</h2>
+    <p class="artist-name">Artist: ${music.artist}</p>
+    <a href="${music.title}.html" target="_blank">
+        <img src='DOWNLOAD BUTTON.png' height='50' width='150'>
+    </a>
+`;
+
+musicList.appendChild(musicItem);
+});
+}
+
+searchBtn.addEventListener('click', () => {
+
+const searchTerm = searchInput.value.toLowerCase();
+
+if (searchTerm === '') {
+    renderMusicList(musicData.slice(0, 5));
+    return;
+}
+
+const filteredData = musicData.filter((music) => {
+    return (
+        music.title.toLowerCase().includes(searchTerm) ||
+        music.artist.toLowerCase().includes(searchTerm) ||
+        music.producer.toLowerCase().includes(searchTerm) ||
+        music.genre.toLowerCase().includes(searchTerm)
+    );
+});
+
+renderMusicList(filteredData);
+
+});
+
+// Show only top 5 on page load
+renderMusicList(musicData.slice(0, 5));
+
+</script>
+
+</body>
+
+<div style="text-align: left; margin-top: 200px;">
+<a href="About.html">
+<img class="about" src="ABOUT US BUTTON.png" height="50" width="150">
+</a>
+
+<a href="contacts.html">
+<img class="about" src="CONTACTS BUTTON.png" height="50" width="150">
+</a>
+</div>
+
+</html>
+
+
+
+
